@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>App Cinco Web Progress!</title>
+    <meta name="description" content="Aplicativo Cinco" />
+    <link rel="manifest" href="./manifest.json">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" href="favicon.png" type="image/x-icon" />
+    <link rel="apple-touch-icon" href="images/hello-icon-152.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="white"/>
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="App Cinco Web Progress">
+    <meta name="msapplication-TileImage" content="images/hello-icon-144.png">
+    <meta name="msapplication-TileColor" content="#FFFFFF">
+  </head>
+  <body class="fullscreen">
+    <a onclick="registerNotification()">Notify me when there are new attendees</a>
+    <br>
+    <div class="container">
+      <h1 class="title">App Cinco Web Progress!</h1>
+    </div>
+    <button id="setup_button" onclick="installApp()">Installer</button>
+    <script src="js/main.js?v=123"></script>
+    <script>
+      let deferredPrompt; // Allows to show the install prompt
+      let setupButton;
+
+      window.addEventListener('beforeinstallprompt', (e) => {
+        // Prevent Chrome 67 and earlier from automatically showing the prompt
+        e.preventDefault();
+        // Stash the event so it can be triggered later.
+        deferredPrompt = e;
+        console.log("beforeinstallprompt fired");
+        if (setupButton == undefined) {
+          setupButton = document.getElementById("setup_button");
+        }
+        // Show the setup button
+        setupButton.style.display = "inline";
+        setupButton.disabled = false;
+      });
+
+      window.addEventListener('appinstalled', (evt) => {
+        console.log("appinstalled fired", evt);
+      });
+
+      function installApp() {
+        // Show the prompt
+        deferredPrompt.prompt();
+        setupButton.disabled = true;
+        // Wait for the user to respond to the prompt
+        deferredPrompt.userChoice
+                .then((choiceResult) => {
+                  if (choiceResult.outcome === 'accepted') {
+                    console.log('PWA setup accepted');
+                    // hide our user interface that shows our A2HS button
+                    setupButton.style.display = 'none';
+                  } else {
+                    console.log('PWA setup rejected');
+                  }
+                  deferredPrompt = null;
+                });
+      }
+
+      function registerNotification() {
+        Notification.requestPermission(permission => {
+          if (permission === 'granted') {
+            registerBackgroundSync()
+          } else
+            console.error("Permission was not granted.")
+        });
+      }
+
+      function registerBackgroundSync() {
+        if (!navigator.serviceWorker) {
+          return console.error("Service Worker not supported")
+        }
+
+        navigator.serviceWorker.ready
+                .then(registration => registration.sync.register('syncAttendees'))
+                .then(() => console.log("Registered background sync"))
+                .catch(err => console.error("Error registering background sync", err))
+      }
+    </script>
+  </body>
+</html>

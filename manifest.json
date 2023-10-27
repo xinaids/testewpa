@@ -1,0 +1,47 @@
+{
+  "name": "App Cinco Web Progress",
+  "short_name": "AppCincoWebProgress",
+  "lang": "pt-BR",
+  "start_url": "https://cinco.cotriba.com.br/modules/testes/Jaisson/tarefas/pwa6/index.html",
+  "display": "standalone",
+  "background_color": "white",
+  "theme_color": "white",
+  "prefer_related_applications": false,
+  "icons": [
+    {
+      "src": "images/img-128.png",
+      "sizes": "128x128",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }, 
+    {
+      "src": "images/img-144.png",
+      "sizes": "144x144",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }, 
+    {
+      "src": "images/img-152.png",
+      "sizes": "152x152",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }, 
+    {
+      "src": "images/img-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }, {
+      "src": "images/img-256.png",
+      "sizes": "256x256",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }, 
+    {
+      "src": "images/img-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
