@@ -2,7 +2,7 @@
   "name": "App Cinco Web Progress",
   "short_name": "AppCincoWebProgress",
   "lang": "pt-BR",
-  "start_url": "https://cinco.cotriba.com.br/modules/testes/Jaisson/tarefas/pwa6/index.html",
+  "start_url": "/",
   "display": "standalone",
   "background_color": "white",
   "theme_color": "white",
