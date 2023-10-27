@@ -1,6 +1,6 @@
 var cacheName = 'cinco-pwa';
 var filesToCache = [
-  'https://cinco.cotriba.com.br/modules/testes/Jaisson/tarefas/pwa6/',
+  '/',
   'index.html',
   'css/style.css',
   'js/main.js'
