@@ -32,7 +32,7 @@ function syncAttendees() {
           .then(refresh)
           .then((attendees) => self.registration.showNotification(
                     `${attendees.length} notificacao funciona`
-                    ))
+                    ));
 }
 
 function update(request) {
@@ -45,8 +45,8 @@ function update(request) {
             // we can put response in cache
             return caches.open('CACHE_NAME')
                     .then(cache => cache.put(request, response.clone()))
-                    .then(() => response) // resolve promise with the Response object
-          })
+                    .then(() => response); // resolve promise with the Response object
+          });
 }
 
 function refresh(response) {
@@ -58,9 +58,9 @@ function refresh(response) {
                 client.postMessage(JSON.stringify({
                   type: response.url,
                   data: jsonResponse.data
-                }))
-              })
-            })
+                }));
+              });
+            });
             return jsonResponse.data; // resolve promise with new data
-          })
+          });
 }
