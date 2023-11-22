@@ -1,6 +1,6 @@
 var cacheName = 'oficina-pwa';
 var filesToCache = [
-  'https://jaisson.github.io/oficina/',
+  '/',
   'index.html',
   'css/style.css',
   'js/main.js'
