@@ -1,3 +1,24 @@
+let deferredPrompt; // Allows to show the install prompt
+let setupButton;
+
+window.addEventListener('beforeinstallprompt', (e) => {
+  // Prevent Chrome 67 and earlier from automatically showing the prompt
+  e.preventDefault();
+  // Stash the event so it can be triggered later.
+  deferredPrompt = e;
+  console.log("beforeinstallprompt fired");
+  if (setupButton === undefined) {
+    setupButton = document.getElementById("setup_button");
+  }
+  // Show the setup button
+  setupButton.style.display = "inline";
+  setupButton.disabled = false;
+});
+
+window.addEventListener('appinstalled', (evt) => {
+  console.log("appinstalled fired", evt);
+});
+
 window.onload = () => {
   'use strict';
   if ('serviceWorker' in navigator) {
@@ -8,25 +29,7 @@ window.onload = () => {
             .catch(err => console.error("Error registering background sync", err));
 
   }
-  /*
-   window.setInterval(function () {
-   notificar("Titulo", "Mensagem", "#");
-   }, 50000);*/
 };
-/*
- function notificar(titulo, msg, link) {
- Notification.requestPermission(function () {
- var notification = new Notification(titulo, {
- icon: 'https://cinco.cotriba.com.br/favicon.png',
- body: msg
- });
- 
- notification.onclick = function () {
- window.open(link);
- };
- });
- }
- */
 
 function installApp() {
   // Show the prompt
