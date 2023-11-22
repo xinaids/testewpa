@@ -2,7 +2,7 @@
   "name": "App Web Progress",
   "short_name": "AppWebProgress",
   "lang": "pt-BR",
-  "start_url": "https://jaisson.github.io/pwa/",
+  "start_url": "https://jaisson.github.io/oficina/",
   "display": "standalone",
   "background_color": "white",
   "theme_color": "white",
