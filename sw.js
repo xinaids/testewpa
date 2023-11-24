@@ -1,66 +1,54 @@
-var cacheName = 'oficina-pwa';
-var filesToCache = [
-  'https://jaisson.github.io/oficina/',
-  'index.html',
-  'css/style.css',
-  'js/main.js'
-];
+// This is the service worker with the combined offline experience (Offline page + Offline copy of pages)
 
-/* Start the service worker and cache all of the app's content */
-self.addEventListener('install', function (e) {
-  e.waitUntil(caches.open(cacheName).then(function (cache) {
-    return cache.addAll(filesToCache);
-  }));
-  self.skipWaiting();
-});
+const CACHE = "pwabuilder-offline-page";
 
-/* Serve cached content when offline */
-self.addEventListener('fetch', function (e) {
-  e.respondWith(caches.match(e.request).then(function (response) {
-    return response || fetch(e.request);
-  }));
-});
+importScripts('https://storage.googleapis.com/workbox-cdn/releases/5.1.2/workbox-sw.js');
 
-self.addEventListener('sync', function (event) {
-  if (event.tag === 'syncAttendees') {
-    event.waitUntil(syncAttendees()); // sending sync request
+// TODO: replace the following with the correct offline fallback page i.e.: const offlineFallbackPage = "offline.html";
+const offlineFallbackPage = "ToDo-replace-this-name.html";
+
+self.addEventListener("message", (event) => {
+  if (event.data && event.data.type === "SKIP_WAITING") {
+    self.skipWaiting();
   }
 });
 
-function syncAttendees() {
-  return update({url: `https://reqres.in/api/users`})
-          .then(refresh)
-          .then((attendees) => self.registration.showNotification(
-                    `${attendees.length} notificacao funciona`
-                    ));
+self.addEventListener('install', async (event) => {
+  event.waitUntil(
+    caches.open(CACHE)
+      .then((cache) => cache.add(offlineFallbackPage))
+  );
+});
+
+if (workbox.navigationPreload.isSupported()) {
+  workbox.navigationPreload.enable();
 }
 
-function update(request) {
-  return fetch(request.url)
-          .then(response => {
-            if (!response.ok) {
-              throw new Error('Network error');
-            }
+workbox.routing.registerRoute(
+  new RegExp('/*'),
+  new workbox.strategies.StaleWhileRevalidate({
+    cacheName: CACHE
+  })
+);
 
-            // we can put response in cache
-            return caches.open('CACHE_NAME')
-                    .then(cache => cache.put(request, response.clone()))
-                    .then(() => response); // resolve promise with the Response object
-          });
-}
+self.addEventListener('fetch', (event) => {
+  if (event.request.mode === 'navigate') {
+    event.respondWith((async () => {
+      try {
+        const preloadResp = await event.preloadResponse;
 
-function refresh(response) {
-  return response.json() // read and parse JSON response
-          .then(jsonResponse => {
-            self.clients.matchAll().then(clients => {
-              clients.forEach(client => {
-                // report and send new data to client
-                client.postMessage(JSON.stringify({
-                  type: response.url,
-                  data: jsonResponse.data
-                }));
-              });
-            });
-            return jsonResponse.data; // resolve promise with new data
-          });
-}
+        if (preloadResp) {
+          return preloadResp;
+        }
+
+        const networkResp = await fetch(event.request);
+        return networkResp;
+      } catch (error) {
+
+        const cache = await caches.open(CACHE);
+        const cachedResp = await cache.match(offlineFallbackPage);
+        return cachedResp;
+      }
+    })());
+  }
+});
