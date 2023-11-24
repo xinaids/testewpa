@@ -16,7 +16,7 @@ self.addEventListener('install', async (event) => {
   event.waitUntil(caches.open(CACHE).then(
     (cache) => cache.addAll([
       'https://jaisson.github.io/oficina/',
-      'pwa/pwa.js'
+      'js/pwa.js'
     ]))
   );
 });
