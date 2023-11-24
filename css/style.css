@@ -17,14 +17,13 @@ html, body {
 }
 
 body {
-  background-color: rgba(0, 0, 0, 0.7);
   background-image: url(../images/fundo.webp) ;
   min-height: 100vh;
   min-width: 100vw;
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
-
+  backdrop-filter: brightness(40%);
   color: white;
 }
 
