@@ -39,7 +39,7 @@ body {
 }
 
 .container h1 {
-  filter: blur(0px) drop-shadow(0 0 10px #00ff15) drop-shadow(0 0 200px #00ff15);
+  filter: blur(0px) drop-shadow(0 0 10px #0011ff) drop-shadow(0 0 200px #0011ff);
   font-size: 7rem;
 }
 
@@ -54,7 +54,7 @@ body {
 @media (max-width: 1060px) {
   .container h1 {
     font-size: 5rem;
-    filter: blur(0px) drop-shadow(0 0 10px #F0FF00) drop-shadow(0 0 200px #F0FF00);
+    filter: blur(0px) drop-shadow(0 0 10px #00ff15) drop-shadow(0 0 200px #00ff15);
   }
   
   .container h2 {
