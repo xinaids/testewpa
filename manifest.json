@@ -8,13 +8,13 @@
   "theme_color": "#244bc1",
   "prefer_related_applications": false,
   "id": "1",
-  "orientation": "landscape",
+  "orientation": "standalone",
   "dir": "auto",
   "scope": "https://jaisson.github.io/oficina/",
   "display_override": [
-    "fullscreen",
-    "browser",
     "standalone",
+    "fullscreen",
+    "browser",    
     "window-controls-overlay"
   ],
   "icons": [
