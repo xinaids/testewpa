@@ -17,7 +17,7 @@ html, body {
 }
 
 body {
-  background-image: url(./images/fundo.webp) ;
+  background-image: url(../images/fundo.webp) ;
   min-height: 100vh;
   min-width: 100vw;
   background-repeat: no-repeat;
