@@ -17,7 +17,6 @@ html, body {
 }
 
 body {
-  color:white;
   background-color: rgba(0, 0, 0, 0.7);
   background-image: url(../images/fundo.webp) ;
   min-height: 100vh;
@@ -25,14 +24,8 @@ body {
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
-}
 
-.fullscreen {
-  display: flex;
-  height: 100%;
-  margin: 0;
-  padding: 0;
-  width: 100%;
+  color: white;
 }
 
 /* Center the content in the browser window */
