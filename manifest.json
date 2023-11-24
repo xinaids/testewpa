@@ -12,8 +12,8 @@
   "dir": "auto",
   "scope": "https://jaisson.github.io/oficina/",
   "display_override": [
-    "browser",
     "fullscreen",
+    "browser",
     "standalone",
     "window-controls-overlay"
   ],
