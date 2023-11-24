@@ -17,6 +17,8 @@ html, body {
 }
 
 body {
+  color:white;
+  background-color: rgba(0, 0, 0, 0.7);
   background-image: url(../images/fundo.webp) ;
   min-height: 100vh;
   min-width: 100vw;
