@@ -54,6 +54,7 @@ self.addEventListener('fetch', (event) => {
   }
 });
 
+/* Registrar pedido de notificação */
 self.addEventListener('push', (event) => {
   event.waitUntil(
     self.registration.showNotification('Titulo', {
