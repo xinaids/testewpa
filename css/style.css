@@ -9,12 +9,22 @@
   top:0;
 }
 
-body {
-  font-family: sans-serif;
+html, body {
+  width: auto;
+  height: auto;
+  overflow-x: auto;
+  overflow-y: auto;
 }
 
-/* Make content area fill the entire browser window */
-html,
+body {
+  background-image: url(./images/fundo.webp) ;
+  min-height: 100vh;
+  min-width: 100vw;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
 .fullscreen {
   display: flex;
   height: 100%;
