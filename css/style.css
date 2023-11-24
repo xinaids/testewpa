@@ -51,7 +51,7 @@ body {
   font-size: 3rem;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 1000px) {
   .container h1 {
     font-size: 5rem;
   }
