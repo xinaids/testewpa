@@ -39,6 +39,7 @@ body {
 }
 
 .container h1 {
+  filter: blur(0px) drop-shadow(0 0 10px #00ff15) drop-shadow(0 0 200px #00ff15);
   font-size: 7rem;
 }
 
