@@ -54,7 +54,7 @@ self.addEventListener('fetch', (event) => {
   }
 });
 
-/* Registrar pedido de notificação */
+/* Registrar pedido de notificação 
 self.addEventListener('push', (event) => {
   event.waitUntil(
     self.registration.showNotification('Titulo', {
@@ -63,3 +63,4 @@ self.addEventListener('push', (event) => {
     })
   );
 });
+*/
