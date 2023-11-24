@@ -9,14 +9,14 @@
   "prefer_related_applications": false,
   "id": "1",
   "orientation": "landscape",
+  "dir": "auto",
+  "scope": "https://jaisson.github.io/oficina/",
   "display_override": [
     "browser",
     "fullscreen",
     "standalone",
     "window-controls-overlay"
   ],
-  "dir": "auto",
-  "scope": "https://jaisson.github.io/oficina/",
   "icons": [
     {
       "src": "windows11/SmallTile.scale-100.png",
