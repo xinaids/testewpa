@@ -53,7 +53,7 @@ body {
 @media (max-width: 1060px) {
   .container h1 {
     font-size: 5rem;
-    filter: blur(0px) drop-shadow(0 0 10px #F0FF00)  drop-shadow(0 0 200px #F0FF00);
+    filter: blur(0px) drop-shadow(0 0 10px #F0FF00) drop-shadow(0 0 200px #F0FF00);
   }
   
   .container h2 {
