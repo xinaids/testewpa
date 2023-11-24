@@ -1,6 +1,6 @@
 {
-  "name": "App Web Progress",
-  "short_name": "AppWebProgress",
+  "name": "Progressive Web App",
+  "short_name": "PWA",
   "lang": "pt-BR",
   "start_url": "https://jaisson.github.io/oficina/",
   "display": "standalone",
