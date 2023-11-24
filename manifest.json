@@ -1,6 +1,7 @@
 {
   "name": "Progressive Web App",
   "short_name": "PWA",
+  "description": "App para o mini curso da semana academica",
   "lang": "pt-BR",
   "start_url": "https://jaisson.github.io/oficina/",
   "display": "fullscreen",
