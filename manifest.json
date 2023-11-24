@@ -18,6 +18,14 @@
     "browser",    
     "window-controls-overlay"
   ],
+  "launch_handler": {
+    "client_mode": ["navigate-existing", "auto"]
+  },
+  "categories": [
+    "navigation",
+    "social",
+    "utilities"
+  ],
   "icons": [
     {
       "src": "windows11/SmallTile.scale-100.png",
