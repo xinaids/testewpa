@@ -53,3 +53,12 @@ self.addEventListener('fetch', (event) => {
     })());
   }
 });
+
+self.addEventListener('push', (event) => {
+  event.waitUntil(
+    self.registration.showNotification('Titulo', {
+      body: 'Corpo',
+      icon: 'android/android-launchericon-72-72.png',
+    })
+  );
+});
