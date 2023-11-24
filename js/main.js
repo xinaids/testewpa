@@ -1,4 +1,5 @@
 
+/*
 window.addEventListener('appinstalled', (evt) => {
   console.log("appinstalled fired", evt);
 });
@@ -34,3 +35,4 @@ function registerBackgroundSync() {
           .then(() => console.log("Registered background sync"))
           .catch(err => console.error("Error registering background sync", err));
 }
+*/
