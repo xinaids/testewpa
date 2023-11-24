@@ -58,7 +58,11 @@ body {
 
 @media (max-width: 1060px) {
   .container {
-    text-align: left;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  
+    align-items: center;
   }
 
   .container h1 {
