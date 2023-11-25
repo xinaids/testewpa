@@ -81,10 +81,12 @@ function buscarDados(request) {
 }
 
 function atualizaBD(response) {
-  return response.json()
+  console.log(response);
+  return [1,2];
+  /* response.json()
           .then(jsonResponse => {
-            self.clients.matchAll().then(clients => {
-              clients.forEach(client => {
+            self.data.matchAll().then(data => {
+              data.forEach(client => {
                 client.postMessage(JSON.stringify({
                   type: response.url,
                   data: jsonResponse.data
@@ -92,7 +94,7 @@ function atualizaBD(response) {
               });
             });
             return jsonResponse.data;
-          });
+          });*/
 }
 
 /*
