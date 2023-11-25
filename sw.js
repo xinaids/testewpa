@@ -57,10 +57,43 @@ self.addEventListener('sync', event => {
 });
 
 function upLocalDataBase() {
-  () => self.registration.showNotification('Atualizei o banco local');
+  return buscarDados({url: `https://reqres.in/api/users`})
+                     .then(atualizaBD)
+                     .then((dados) => self.registration.showNotification('Banco de dados Atualizado', {
+                               body: `Total de dados clientes: ${dados.length}`,
+                               icon: 'favicon.png',
+                             }                             
+                           ));
 }
 
+function buscarDados(request) {
+  return fetch(request.url)
+              .then(response => {
+                 if (!response.ok) {
+                   throw new Error('Sem internet');
+                 }
 
+                 // Fazer os tratamentos e guardar no banco
+                 return caches.open('CACHE_DATABASE')
+                              .then(cache => cache.put(request, response.clone()))
+                              .then(() => response)
+          })
+}
+
+function atualizaBD(response) {
+  return response.json()
+          .then(jsonResponse => {
+            self.clients.matchAll().then(clients => {
+              clients.forEach(client => {
+                client.postMessage(JSON.stringify({
+                  type: response.url,
+                  data: jsonResponse.data
+                }));
+              });
+            });
+            return jsonResponse.data;
+          });
+}
 
 /*
 self.addEventListener("message", (event) => {
