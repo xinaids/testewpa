@@ -81,37 +81,10 @@ function buscarDados(request) {
 }
 
 function atualizaBD(response) {
-  response.json()
+  return response.json()
           .then(jsonResponse => {
-            jsonResponse.data.forEach(usuarios => {
-              console.log(usuarios);
-            });
-            /*
-            self.data.matchAll().then(arrData => {
-              console.log(arrData);
-              
-              data.forEach(client => {
-                client.postMessage(JSON.stringify({
-                  type: response.url,
-                  data: jsonResponse.data
-                }));
-              });
-            });
-            return jsonResponse.data;*/
-          });
-  return [1,2];
-  /* response.json()
-          .then(jsonResponse => {
-            self.data.matchAll().then(data => {
-              data.forEach(client => {
-                client.postMessage(JSON.stringify({
-                  type: response.url,
-                  data: jsonResponse.data
-                }));
-              });
-            });
             return jsonResponse.data;
-          });*/
+          });
 }
 
 /*
