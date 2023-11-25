@@ -3,8 +3,8 @@ window.onload = () => {
     navigator.serviceWorker.register('./sw.js');
     navigator.serviceWorker.ready
           .then(registration => registration.sync.register('syncAttendees'))
-          .then(() => console.log("Registered background sync"))
-          .catch(err => console.error("Error registering background sync", err));
+          .then(() => console.log("Serviço de sincronização em segundo plano registrado com sucesso"))
+          .catch(err => console.error("Erro ao registrar o serviço de sincronização em segundo plano", err));
 
   }
 };
