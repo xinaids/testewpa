@@ -60,6 +60,8 @@ function upLocalDataBase() {
   () => self.registration.showNotification('Atualizei o banco local');
 }
 
+
+
 /*
 self.addEventListener("message", (event) => {
   if (event.data && event.data.type === "SKIP_WAITING") {
