@@ -1,3 +1,4 @@
+
 window.onload = async () => {
   if ('serviceWorker' in navigator) {
     const rgSW = await navigator.serviceWorker.register('./sw.js');
