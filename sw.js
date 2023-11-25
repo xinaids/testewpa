@@ -85,7 +85,7 @@ function atualizaBD(response) {
           .then(jsonResponse => {
             
             self.data.matchAll().then(arrData => {
-              console.log(arrData.data);
+              console.log(arrData);
               /*
               data.forEach(client => {
                 client.postMessage(JSON.stringify({
