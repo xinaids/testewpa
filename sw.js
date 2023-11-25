@@ -81,7 +81,19 @@ function buscarDados(request) {
 }
 
 function atualizaBD(response) {
-  console.log(response);
+  response.json()
+          .then(jsonResponse => {
+            console.log(jsonResponse)
+            /*self.data.matchAll().then(data => {
+              data.forEach(client => {
+                client.postMessage(JSON.stringify({
+                  type: response.url,
+                  data: jsonResponse.data
+                }));
+              });
+            });
+            return jsonResponse.data;*/
+          });
   return [1,2];
   /* response.json()
           .then(jsonResponse => {
