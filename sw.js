@@ -60,7 +60,7 @@ function upLocalDataBase() {
   return buscarDados({url: `https://reqres.in/api/users`})
                      .then(atualizaBD)
                      .then((dados) => self.registration.showNotification('Banco de dados Atualizado', {
-                               body: `Total de dados clientes: ${dados.length}`,
+                               body: `Total de dados atualizados: ${dados.length}`,
                                icon: 'favicon.png',
                              }                             
                            ));
