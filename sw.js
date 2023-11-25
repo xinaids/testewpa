@@ -56,6 +56,14 @@ self.addEventListener('sync', event => {
   }
 });
 
+self.addEventListener('periodicsync', event => {
+  if (event.tag === 'database-sync-periodic') {
+    event.waitUntil(
+      upLocalDataBase()
+    );
+  }
+});
+
 function upLocalDataBase() {
   return buscarDados({url: `https://reqres.in/api/users`})
                      .then(atualizaBD)
