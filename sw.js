@@ -83,7 +83,7 @@ function buscarDados(request) {
 function atualizaBD(response) {
   response.json()
           .then(jsonResponse => {
-            console.log(jsonResponse);
+            console.log(jsonResponse.data);
             /*
             self.data.matchAll().then(arrData => {
               console.log(arrData);
