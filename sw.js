@@ -84,9 +84,10 @@ function atualizaBD(response) {
   response.json()
           .then(jsonResponse => {
             
-            self.data.matchAll().then(data => {
-              console.log(data);
-              /*data.forEach(client => {
+            self.data.matchAll().then(arrData => {
+              console.log(arrData.data);
+              /*
+              data.forEach(client => {
                 client.postMessage(JSON.stringify({
                   type: response.url,
                   data: jsonResponse.data
