@@ -5,32 +5,55 @@ const CACHE = "pwa-offline-page";
 
 // TODO: replace the following with the correct offline fallback page i.e.: const offlineFallbackPage = "offline.html";
 const offlineFallbackPage = "index.html";
+const fCache = [
+  'https://jaisson.github.io/oficina/',
+  'js/pwa.js'
+];
 
+
+if (workbox.navigationPreload.isSupported()) {
+  workbox.navigationPreload.enable();
+
+  workbox.routing.registerRoute(
+    new RegExp('/*'),
+    new workbox.strategies.StaleWhileRevalidate({
+      cacheName: CACHE
+    })
+  );
+}
+
+/* 
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+       Registrar os eventos 
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+*/ 
+
+self.addEventListener('install', async (event) => {
+  event.waitUntil(
+    caches.open(CACHE)
+          .then((cache) => cache.addAll(fCache))
+  );
+
+  self.skipWaiting();  
+});
+
+self.addEventListener('push', (event) => {
+  event.waitUntil(
+    self.registration.showNotification('Titulo', {
+      body: 'Mensagem',
+      icon: 'favicon.png',
+    })
+  );
+});
+
+/*
 self.addEventListener("message", (event) => {
   if (event.data && event.data.type === "SKIP_WAITING") {
     self.skipWaiting();
   }
 });
-
-self.addEventListener('install', async (event) => {
-  event.waitUntil(caches.open(CACHE).then(
-    (cache) => cache.addAll([
-      'https://jaisson.github.io/oficina/',
-      'js/pwa.js'
-    ]))
-  );
-});
-
-if (workbox.navigationPreload.isSupported()) {
-  workbox.navigationPreload.enable();
-}
-
-workbox.routing.registerRoute(
-  new RegExp('/*'),
-  new workbox.strategies.StaleWhileRevalidate({
-    cacheName: CACHE
-  })
-);
 
 self.addEventListener('fetch', (event) => {
   if (event.request.mode === 'navigate') {
@@ -53,3 +76,4 @@ self.addEventListener('fetch', (event) => {
     })());
   }
 });
+*/
