@@ -48,6 +48,18 @@ self.addEventListener('push', (event) => {
   );
 });
 
+self.addEventListener('sync', event => {
+  if (event.tag === 'database-sync') {
+    event.waitUntil(
+      upLocalDataBase()
+    );
+  }
+});
+
+function upLocalDataBase() {
+  () => self.registration.showNotification('Atualizei o banco local');
+}
+
 /*
 self.addEventListener("message", (event) => {
   if (event.data && event.data.type === "SKIP_WAITING") {
