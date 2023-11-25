@@ -15,6 +15,7 @@ window.onload = () => {
 (async () => {
   const periodicSyncPermission = await navigator.permissions.query({name: 'periodic-background-sync'});
   if (periodicSyncPermission.state == 'granted') {
+    await navigator.serviceWorker.register('./sw.js');
     navigator.serviceWorker.ready
           .then(registration => registration.periodicSync.register('database-sync-periodic', {minInterval: 2 * 1000}))
           .then(() => console.log("Serviço de sincronização periódica em segundo plano registrado com sucesso"))
