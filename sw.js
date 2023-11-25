@@ -58,9 +58,10 @@ self.addEventListener('sync', event => {
 
 self.addEventListener('periodicsync', event => {
   if (event.tag === 'database-sync-periodic') {
-    event.waitUntil(
+    console.log('Buscar os dados de novo');
+    /*event.waitUntil(
       upLocalDataBase()
-    );
+    );*/
   }
 });
 
