@@ -1,5 +1,5 @@
 
-importScripts('https://storage.googleapis.com/workbox-cdn/releases/5.1.2/workbox-sw.js');
+//importScripts('https://storage.googleapis.com/workbox-cdn/releases/5.1.2/workbox-sw.js');
 
 const CACHE = "pwa-offline-page";
 
@@ -9,7 +9,7 @@ const fCache = [
   'https://jaisson.github.io/oficina/',
   'js/pwa.js'
 ];
-
+/*
 
 if (workbox.navigationPreload.isSupported()) {
   workbox.navigationPreload.enable();
@@ -21,7 +21,7 @@ if (workbox.navigationPreload.isSupported()) {
     })
   );
 }
-
+*/
 /* 
 @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
