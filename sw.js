@@ -58,12 +58,11 @@ self.addEventListener('sync', event => {
 });
 
 self.addEventListener('periodicsync', event => {
-  console.log('Buscar os dados por persync');
   if (event.tag === 'database-sync-periodic') {
     console.log('Buscar os dados de novo');
-    /*event.waitUntil(
+    event.waitUntil(
       upLocalDataBase()
-    );*/
+    );
   }
 });
 
