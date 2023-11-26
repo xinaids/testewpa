@@ -49,6 +49,7 @@ self.addEventListener('push', (event) => {
 });
 
 self.addEventListener('sync', event => {
+  console.log('sincornzando os dados na primeira entrada');
   if (event.tag === 'database-sync') {
     event.waitUntil(
       upLocalDataBase()
